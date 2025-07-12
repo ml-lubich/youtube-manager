@@ -186,7 +186,3 @@ If you encounter issues or have questions:
 1. Check the [Issues](https://github.com/yourusername/youtube-playlist-manager/issues) page
 2. Create a new issue with detailed information
 3. Include error messages and steps to reproduce
-
----
-
-Made with ❤️ for YouTube playlist organization 
