@@ -46,6 +46,7 @@ flowchart LR
 - [Troubleshooting](#-troubleshooting)
 - [Future Features](#-future-features)
 - [Support](#-support)
+- [🗺️ Repository map](#️-repository-map)
 
 ## 🔁 Auto-merge algorithm
 
@@ -283,3 +284,19 @@ If you encounter issues or have questions:
 1. Check the [Issues](https://github.com/yourusername/youtube-playlist-manager/issues) page
 2. Create a new issue with detailed information
 3. Include error messages and steps to reproduce
+
+
+## 🗺️ Repository map
+
+Top-level layout of `youtube-manager` rendered as a Mermaid mindmap (auto-generated from the on-disk tree).
+
+```mermaid
+mindmap
+  root((youtube-manager))
+    files
+      LICENSE
+      README.md
+      main.py
+      pyproject.toml
+      requirements.txt
+```
