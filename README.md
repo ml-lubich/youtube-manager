@@ -1,6 +1,49 @@
 # 🎵 YouTube Playlist Manager
 
-A comprehensive Python tool for managing YouTube playlists with intelligent duplicate detection, automatic merging, and advanced playlist organization features.
+> A comprehensive Python tool for managing YouTube playlists with
+> intelligent duplicate detection, automatic merging, and advanced
+> playlist organization features.
+
+```mermaid
+flowchart LR
+    USER[("👤 user")]
+    MAIN{{"🧰 main.py<br/>mode select"}}
+    AUTO["🤖 Automatic<br/>smart merge"]
+    MAN["🎮 Manual<br/>per-action"]
+    LITE["📊 Analysis<br/>lightweight_manager"]
+    QUOTA["🪙 quota_checker"]
+    API["☁ YouTube Data API v3"]
+    PL[("📺 your playlists")]
+
+    USER --> MAIN
+    MAIN --> AUTO --> API
+    MAIN --> MAN --> API
+    MAIN --> LITE --> API
+    QUOTA --> API
+    API <--> PL
+
+    classDef io fill:#0e1116,stroke:#2f81f7,stroke-width:1.5px,color:#e6edf3;
+    classDef tool fill:#161b22,stroke:#3fb950,stroke-width:1.5px,color:#e6edf3;
+    classDef brain fill:#161b22,stroke:#d29922,stroke-width:1.5px,color:#e6edf3;
+    classDef out fill:#0e1116,stroke:#a371f7,stroke-width:1.5px,color:#e6edf3;
+    class USER,PL io;
+    class AUTO,MAN,LITE,QUOTA tool;
+    class MAIN,API brain;
+```
+
+## Table of contents
+
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+- [API Quota Usage](#-api-quota-usage)
+- [Configuration](#-configuration)
+- [Project Structure](#-project-structure)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Important Notes](#-important-notes)
+- [Troubleshooting](#-troubleshooting)
+- [Future Features](#-future-features)
+- [Support](#-support)
 
 ## ✨ Features
 
