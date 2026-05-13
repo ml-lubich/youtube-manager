@@ -47,6 +47,7 @@ flowchart LR
 - [Future Features](#-future-features)
 - [Support](#-support)
 - [🗺️ Repository map](#️-repository-map)
+- [📊 Code composition](#-code-composition)
 
 ## 🔁 Auto-merge algorithm
 
@@ -299,4 +300,20 @@ mindmap
       main.py
       pyproject.toml
       requirements.txt
+```
+
+
+## 📊 Code composition
+
+File-type breakdown of source under this repo (skips `.git`, `node_modules`, build caches, lockfiles).
+
+```mermaid
+pie showData title File-type composition of youtube-manager (12 files)
+    "Python" : 4
+    "Other" : 2
+    "JSON" : 2
+    "Text" : 1
+    "Shell" : 1
+    "TOML" : 1
+    "Markdown" : 1
 ```
