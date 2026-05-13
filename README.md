@@ -34,6 +34,8 @@ flowchart LR
 ## Table of contents
 
 - [Features](#-features)
+- [Auto-merge algorithm](#-auto-merge-algorithm)
+- [API call sequence](#-api-call-sequence)
 - [Quick Start](#-quick-start)
 - [API Quota Usage](#-api-quota-usage)
 - [Configuration](#-configuration)
@@ -44,6 +46,58 @@ flowchart LR
 - [Troubleshooting](#-troubleshooting)
 - [Future Features](#-future-features)
 - [Support](#-support)
+
+## 🔁 Auto-merge algorithm
+
+```mermaid
+flowchart LR
+    A([Automatic mode])
+    B["list user playlists"]
+    C["normalize names<br/>lower / strip / spaces"]
+    D["group by similarity"]
+    E{"group size &gt; 1?"}
+    F["pick target = largest"]
+    G["diff video IDs<br/>per source playlist"]
+    H{"target + new &le; 5000?"}
+    I["insert videos in batches"]
+    J["split overflow<br/>into <name> #2"]
+    K["delete empty source"]
+    L{"more groups?"}
+    Z([summary])
+    A --> B --> C --> D --> E
+    E -- no  --> L
+    E -- yes --> F --> G --> H
+    H -- yes --> I --> K --> L
+    H -- no  --> J --> I
+    L -- yes --> E
+    L -- no  --> Z
+```
+
+## 📡 API call sequence
+
+```mermaid
+sequenceDiagram
+    participant U as user
+    participant M as main.py
+    participant Q as quota_checker
+    participant Y as YouTube Data API v3
+    participant PL as user playlists
+
+    U->>M: choose mode
+    M->>Q: estimate cost
+    Q-->>M: ok / over
+    M->>Y: playlists.list(mine=true)
+    Y-->>M: playlist metadata
+    loop per playlist
+        M->>Y: playlistItems.list
+        Y-->>M: video items
+    end
+    M->>Y: playlistItems.insert / delete / update
+    Y->>PL: mutate
+    PL-->>Y: ok
+    Y-->>M: results
+    M-->>U: summary
+```
 
 ## ✨ Features
 
